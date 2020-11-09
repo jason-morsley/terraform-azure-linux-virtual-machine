@@ -21,6 +21,10 @@ az login --service-principal -u $ARM_CLIENT_ID -p $ARM_CLIENT_SECRET --tenant $A
 
 https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/service_principal_client_secret
 
+Check public IP address of your VM with:
+```bash
+az vm show --resource-group k3s-resource-group --name k3s-vm -d --query [publicIps] -o tsv
+```
 ## Usage
 
 ```

@@ -3,7 +3,7 @@
 #############################################################################
 
 resource "azurerm_linux_virtual_machine" "k3s-vm" {
-  name                  = "k3s-vm"
+  name                  = var.name
   location              = var.location
   resource_group_name   = azurerm_resource_group.k3s-resource-group.name
   network_interface_ids = [azurerm_network_interface.k3s-nic.id]
@@ -23,11 +23,11 @@ resource "azurerm_linux_virtual_machine" "k3s-vm" {
   }
 
   computer_name  = "k3s-vm"
-  admin_username = "k3suser"
+  admin_username = "ubuntu"
   disable_password_authentication = true
 
   admin_ssh_key {
-    username       = "k3suser"
+    username       = "ubuntu"
     public_key     = tls_private_key.ssh_key.public_key_openssh
   }
 

@@ -7,7 +7,12 @@ variable "location" {
   default = "uksouth" # London
 }
 
-resource "tls_private_key" "ssh_key" {
-  algorithm = "RSA"
-  rsa_bits = 4096
+variable "name" {
+  type = string
+  default = "k3s-vm"
+}
+
+variable "local-folder-name" {
+  type = string
+  default = "keys"
 }
