@@ -23,7 +23,7 @@ output "private_key" {
 }
 
 output "ssh_command" {
-  value = "chmod 400 keys/${var.name}* && ssh -i \"keys/${var.name}-ec2.pem\" ubuntu@${azurerm_linux_virtual_machine.vm.public_ip_address}"
+  value = "chmod 400 keys/${var.name}* && ssh -i \"keys/${var.name}.pem\" ubuntu@${azurerm_linux_virtual_machine.vm.public_ip_address}"
 }
 
 #############################################################################
