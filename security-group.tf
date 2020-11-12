@@ -1,10 +1,10 @@
 #############################################################################
 # SECURITY GROUP
 #############################################################################
-resource "azurerm_network_security_group" "k3s-nsg" {
-  name                = "k3s-nsg"
+resource "azurerm_network_security_group" "nsg" {
+  name                = "nsg"
   location            = var.location
-  resource_group_name = azurerm_resource_group.k3s-resource-group.name
+  resource_group_name = azurerm_resource_group.vm-resource-group.name
 
   security_rule {
     name                       = "SSH"
@@ -19,14 +19,14 @@ resource "azurerm_network_security_group" "k3s-nsg" {
   }
 }
 
-resource "azurerm_network_interface_security_group_association" "k3s-nisga" {
-  network_interface_id      = azurerm_network_interface.k3s-nic.id
-  network_security_group_id = azurerm_network_security_group.k3s-nsg.id
+resource "azurerm_network_interface_security_group_association" "nisga" {
+  network_interface_id      = azurerm_network_interface.nic.id
+  network_security_group_id = azurerm_network_security_group.nsg.id
 }
 
-resource "azurerm_public_ip" "k3s-public-ip" {
-  name                         = "k3s-public-ip"
+resource "azurerm_public_ip" "vm-public-ip" {
+  name                         = "vm-public-ip"
   location                     = var.location
-  resource_group_name          = azurerm_resource_group.k3s-resource-group.name
+  resource_group_name          = azurerm_resource_group.vm-resource-group.name
   allocation_method            = "Dynamic"
 }

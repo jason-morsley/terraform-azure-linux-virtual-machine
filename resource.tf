@@ -2,7 +2,7 @@
 # RESOURCES
 #############################################################################
 
-resource "azurerm_resource_group" "k3s-resource-group" {
-  name     = "k3s-resource-group"
+resource "azurerm_resource_group" "vm-resource-group" {
+  name     = "vm-resource-group"
   location = var.location
 }

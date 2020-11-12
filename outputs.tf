@@ -23,7 +23,7 @@ output "private_key" {
 }
 
 output "ssh_command" {
-  value = "chmod 400 keys/${var.name}* && ssh -i \"keys/${var.name}-ec2.pem\" ubuntu@${azurerm_linux_virtual_machine.k3s-vm.public_ip_address}"
+  value = "chmod 400 keys/${var.name}* && ssh -i \"keys/${var.name}-ec2.pem\" ubuntu@${azurerm_linux_virtual_machine.vm.public_ip_address}"
 }
 
 #############################################################################
@@ -31,16 +31,16 @@ output "ssh_command" {
 #############################################################################
 
 output "id" {
-  value = azurerm_linux_virtual_machine.k3s-vm.id
+  value = azurerm_linux_virtual_machine.vm.id
 }
 
 output "public_ip" {
-  value = azurerm_linux_virtual_machine.k3s-vm.public_ip_address
+  value = azurerm_linux_virtual_machine.vm.public_ip_address
 }
 
 
 output "private_ip" {
-  value = azurerm_linux_virtual_machine.k3s-vm.private_ip_address
+  value = azurerm_linux_virtual_machine.vm.private_ip_address
 }
 
 output "encoded_public_key" {

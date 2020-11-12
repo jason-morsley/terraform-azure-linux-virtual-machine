@@ -9,7 +9,7 @@ variable "location" {
 
 variable "name" {
   type = string
-  default = "k3s-vm"
+  default = "standard-vm"
 }
 
 variable "local-folder-name" {

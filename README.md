@@ -23,10 +23,5 @@ https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/ser
 
 Check public IP address of your VM with:
 ```bash
-az vm show --resource-group k3s-resource-group --name k3s-vm -d --query [publicIps] -o tsv
-```
-## Usage
-
-```
-
+az vm show --resource-group vm-resource-group --name vm -d --query [publicIps] -o tsv
 ```

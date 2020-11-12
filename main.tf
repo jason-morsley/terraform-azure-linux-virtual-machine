@@ -2,15 +2,15 @@
 # VIRTUAL MACHINE
 #############################################################################
 
-resource "azurerm_linux_virtual_machine" "k3s-vm" {
+resource "azurerm_linux_virtual_machine" "vm" {
   name                  = var.name
   location              = var.location
-  resource_group_name   = azurerm_resource_group.k3s-resource-group.name
-  network_interface_ids = [azurerm_network_interface.k3s-nic.id]
+  resource_group_name   = azurerm_resource_group.vm-resource-group.name
+  network_interface_ids = [azurerm_network_interface.nic.id]
   size                  = "Standard_DS1_v2" # Unsure if this is powerful enough.
 
   os_disk {
-    name              = "k3sOsDisk"
+    name              = "OsDisk"
     caching           = "ReadWrite"
     storage_account_type = "Premium_LRS" # SSD storage
   }
@@ -22,7 +22,7 @@ resource "azurerm_linux_virtual_machine" "k3s-vm" {
     version   = "latest"
   }
 
-  computer_name  = "k3s-vm"
+  computer_name  = "vm"
   admin_username = "ubuntu"
   disable_password_authentication = true
 
@@ -32,6 +32,6 @@ resource "azurerm_linux_virtual_machine" "k3s-vm" {
   }
 
 //  boot_diagnostics {
-//    storage_account_uri = azurerm_storage_account.k3s-storage-account.primary_blob_endpoint
+//    storage_account_uri = azurerm_storage_account.storage-account.primary_blob_endpoint
 //  }
 }
